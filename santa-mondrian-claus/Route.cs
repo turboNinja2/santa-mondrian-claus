@@ -113,7 +113,7 @@ namespace santa_mondrian_claus
             list[idx2] = temp;
         }
 
-        public void Dump(string name)
+        public string Dump(string name)
         {
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + name + ".csv";
 
@@ -130,6 +130,8 @@ namespace santa_mondrian_claus
 
             File.AppendAllLines(filePath, res./*OrderBy(c => c.Item1)*/Select(d => d.Item1.ToString() + "," + d.Item2.ToString()));
 
+
+            return filePath;
         }
 
     }

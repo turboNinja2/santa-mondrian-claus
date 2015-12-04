@@ -20,7 +20,7 @@ namespace santa_mondrian_claus
 
             Route myRoute = new Route(@"C:\Users\Windows\Desktop\R\santa-mondrian-claus\submission.csv",myGifts);
 
-            GeneticAlgorithm.RunRepositions(myRoute, 10000000);
+            GeneticAlgorithm.RunRepositions(myRoute, 100000000);
 
             Console.ReadKey();
 
