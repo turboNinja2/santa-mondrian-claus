@@ -16,7 +16,21 @@ namespace santa_mondrian_claus
             string oldDump = "";
             for (int i = 0; i < steps; i++)
             {
-                plan.ShuffleOneTrajectory(1 + rnd.Next(plan.NTrajectories - 1));
+                plan.TryToShuffleOneTrajectory(plan.TrajectoriesIds[rnd.Next(plan.NTrajectories)]);
+
+                plan.TryToShuffleNTrajectories(plan.TrajectoriesIds[rnd.Next(plan.NTrajectories)], 3);
+                plan.TryToShuffleNTrajectories(plan.TrajectoriesIds[rnd.Next(plan.NTrajectories)], 5, ConsoleColor.Cyan);
+
+                //plan.TryToSplitTrajectory(plan.TrajectoriesIds[rnd.Next(plan.NTrajectories)]);
+                //plan.TryToMergeTrajectories(plan.TrajectoriesIds[rnd.Next(plan.NTrajectories)],
+                //        plan.TrajectoriesIds[rnd.Next(plan.NTrajectories)]);
+
+                if (i % 10000 == 0)
+                {
+                    double currentScore = plan.WRW();
+                    Console.WriteLine("\n" + currentScore.ToString("### ### ### ###.000"));
+                }
+
                 if (i % 1000000 == 0)
                 {
                     double currentScore = plan.WRW();

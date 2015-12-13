@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace santa_mondrian_claus
 {
@@ -40,7 +41,11 @@ namespace santa_mondrian_claus
         public static Gift FromString(string line)
         {
             string[] elements = line.Split(',');
-            return new Gift(Convert.ToInt32(elements[0]) - 1, Convert.ToSingle(elements[1]), Convert.ToSingle(elements[2]), Convert.ToSingle(elements[3]));
+            return new Gift(
+                Convert.ToInt32(elements[0], CultureInfo.GetCultureInfo("en-US")) - 1,
+                Convert.ToSingle(elements[1], CultureInfo.GetCultureInfo("en-US")),
+                Convert.ToSingle(elements[2], CultureInfo.GetCultureInfo("en-US")),
+                Convert.ToSingle(elements[3], CultureInfo.GetCultureInfo("en-US")));
         }
 
         public override string ToString()

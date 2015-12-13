@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using santa_mondrian_claus.FilesUtils;
+using System;
 using System.Linq;
-using System.Text;
-using QuadTree;
-using santa_mondrian_claus.FilesUtils;
-using System.Diagnostics;
-using santa_mondrian_claus.Geometry.QuadTree;
 
 namespace santa_mondrian_claus
 {
@@ -15,10 +10,12 @@ namespace santa_mondrian_claus
         {
             Console.WriteLine(Distances.Haversine(90, 88, 0, 88));
 
-            string filePath = @"C:\Users\Windows\Desktop\R\santa-mondrian-claus\gifts.csv";
+            string mainFolder = @"C:\Users\JUJulien\Desktop\KAGGLE\Competitions\santa-mondrian-claus\";
+
+            string filePath = mainFolder + "gifts.csv";
             Gift[] myGifts = DataEnumerator.Enumerate<Gift>(filePath, true, Gift.FromString).ToArray();
 
-            Route myRoute = new Route(@"C:\Users\Windows\Desktop\R\santa-mondrian-claus\submission.csv",myGifts);
+            Route myRoute = new Route(mainFolder + "submission.csv", myGifts);
 
             GeneticAlgorithm.RunRepositions(myRoute, 100000000);
 
